@@ -10,7 +10,6 @@ import {
   MultimodalContent,
   SpeechOptions,
 } from "../api";
-import Locale from "../../locales";
 import {
   EventStreamContentType,
   fetchEventSource,
@@ -211,10 +210,6 @@ export class HunyuanApi implements LLMApi {
                 const resJson = await res.clone().json();
                 extraInfo = prettyObject(resJson);
               } catch {}
-
-              if (res.status === 401) {
-                responseTexts.push(Locale.Error.Unauthorized);
-              }
 
               if (extraInfo) {
                 responseTexts.push(extraInfo);
